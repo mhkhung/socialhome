@@ -18,6 +18,7 @@
 */
 import React, { useEffect, useState } from "react"
 import { useTranslation } from 'react-i18next';
+import useBreadcrumbs from "use-react-router-breadcrumbs";
 
 // reactstrap components
 
@@ -48,11 +49,13 @@ import SectionDownload from "views/index-sections/SectionDownload.js";
 
 function Index() {
   const { t } = useTranslation();
+  const breadcrumbs = useBreadcrumbs();
   document.documentElement.classList.remove("nav-open");
   return (
     <>
       <IndexNavbar />
       <IndexHeader />
+
       <div className="main">
         <SectionEvents />
         <SectionSocial />

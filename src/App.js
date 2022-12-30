@@ -1,6 +1,6 @@
 import React from 'react';
 import { OAuthPopup, useOAuth2 } from "@tasoskakour/react-use-oauth2";
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // styles
 import "bootstrap/scss/bootstrap.scss";
@@ -18,8 +18,13 @@ import RegisterPage from "views/examples/RegisterPage.js";
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/oauth" >
+      <Routes>
+        <Route path="/index" element={<Index />} />
+        <Route path="/oauth" element={<OAuthPopup />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/" element={<Navigate to="/index" replace />} />
+
+        {/* <Route path="/oauth" >
           <OAuthPopup />
         </Route>
         <Route path="/index">
@@ -38,8 +43,8 @@ function App() {
           path="/register-page"
           render={(props) => <RegisterPage {...props} />}
         />
-        <Route path="/" render={() => <Redirect to="index" />} />
-      </Switch>
+        <Route path="/" render={() => <Redirect to="index" />} /> */}
+      </Routes>
     </BrowserRouter>    
   );
 }

@@ -23,10 +23,11 @@
     "react-dom": "18.2.0",
     "react-i18next": "^12.1.1",
     "react-redux": "^8.0.5",
-    "react-router-dom": "5.2.0",
+    "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
     "reactstrap": "8.9.0",
     "sass": "1.53.0",
+    "use-react-router-breadcrumbs": "^4.0.1",
     "web-vitals": "^3.1.0"
   },
   "scripts": {
