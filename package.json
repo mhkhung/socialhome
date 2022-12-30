@@ -8,11 +8,14 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@reduxjs/toolkit": "^1.9.1",
+    "@tasoskakour/react-use-oauth2": "^1.0.13",
     "axios": "^1.2.1",
     "babel-plugin-macros": "^3.1.0",
     "classnames": "2.3.1",
+    "html-react-parser": "^3.0.6",
     "i18next": "^22.4.6",
     "i18next-browser-languagedetector": "^7.0.1",
+    "lodash": "^4.17.21",
     "moment": "2.29.4",
     "nouislider": "14.5.0",
     "react": "18.2.0",
@@ -27,8 +30,6 @@
     "web-vitals": "^3.1.0"
   },
   "scripts": {
-    "start-pack": "webpack serve --mode development --open --hot",
-    "build-pack": "webpack --mode production",
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build && gulp licenses",
     "test": "react-scripts test",

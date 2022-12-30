@@ -1,4 +1,5 @@
 import React from 'react';
+import { OAuthPopup, useOAuth2 } from "@tasoskakour/react-use-oauth2";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 // styles
@@ -9,7 +10,7 @@ import "assets/demo/demo.css?v=1.3.0";
 import Index from "views/Index.js";
 import NucleoIcons from "views/NucleoIcons.js";
 import LandingPage from "views/examples/LandingPage.js";
-import ProfilePage from "views/examples/ProfilePage.js";
+import AboutPage from "views/examples/AboutPage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
 // others
 
@@ -18,24 +19,26 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/index" render={(props) => <Index {...props} />} />
-        <Route
-          path="/nucleo-icons"
-          render={(props) => <NucleoIcons {...props} />}
-        />
-        <Route
-          path="/landing-page"
-          render={(props) => <LandingPage {...props} />}
-        />
-        <Route
-          path="/profile-page"
-          render={(props) => <ProfilePage {...props} />}
-        />
+        <Route path="/oauth" >
+          <OAuthPopup />
+        </Route>
+        <Route path="/index">
+          <Index />
+        </Route>
+        <Route path="/about">
+          <AboutPage />
+        </Route>
+        <Route path="/nucleo-icons">
+          <NucleoIcons />
+        </Route>
+        <Route path="/landing-page" >
+        <LandingPage />
+        </Route>
         <Route
           path="/register-page"
           render={(props) => <RegisterPage {...props} />}
         />
-        <Redirect to="/index" />
+        <Route path="/" render={() => <Redirect to="index" />} />
       </Switch>
     </BrowserRouter>    
   );

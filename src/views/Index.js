@@ -16,7 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useEffect, useState } from "react"
 import { useTranslation } from 'react-i18next';
 
 // reactstrap components
@@ -24,9 +24,14 @@ import { useTranslation } from 'react-i18next';
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
-import DemoFooter from "components/Footers/DemoFooter.js";
+import HkersFooter from "components/Footers/HkersFooter.js";
 
 // index sections
+import SectionEvents from "views/index-sections/SectionEvents.js";
+import SectionSocial from "views/index-sections/SectionSocial.js";
+import SectionSocialAccounts from "views/index-sections/SectionSocialAccounts.js";
+import SectionHiring from "views/index-sections/SectionHiring.js";
+
 import SectionButtons from "views/index-sections/SectionButtons.js";
 import SectionNavbars from "views/index-sections/SectionNavbars.js";
 import SectionNavigation from "views/index-sections/SectionNavigation.js";
@@ -44,17 +49,16 @@ import SectionDownload from "views/index-sections/SectionDownload.js";
 function Index() {
   const { t } = useTranslation();
   document.documentElement.classList.remove("nav-open");
-  React.useEffect(() => {
-    document.body.classList.add("index");
-    return function cleanup() {
-      document.body.classList.remove("index");
-    };
-  });
   return (
     <>
       <IndexNavbar />
       <IndexHeader />
       <div className="main">
+        <SectionEvents />
+        <SectionSocial />
+        <SectionSocialAccounts />
+
+        {/* <SectionHiring />
         <SectionButtons />
         <SectionNavbars />
         <SectionNavigation />
@@ -67,8 +71,9 @@ function Index() {
         <SectionDark />
         <SectionLogin />
         <SectionExamples />
-        <SectionDownload />
-        <DemoFooter />
+        <SectionDownload /> */}
+
+        <HkersFooter />
       </div>
     </>
   );

@@ -31,15 +31,15 @@ import {
   TabPane,
   Container,
   Row,
-  Col
+  Col,
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
-import DemoFooter from "components/Footers/DemoFooter.js";
+import HkersFooter from "components/Footers/HkersFooter.js";
 
-function ProfilePage() {
+function AboutPage() {
   const [activeTab, setActiveTab] = React.useState("1");
 
   const toggle = (tab) => {
@@ -50,14 +50,14 @@ function ProfilePage() {
 
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
-    document.body.classList.add("landing-page");
+    document.body.classList.add("about-page");
     return function cleanup() {
-      document.body.classList.remove("landing-page");
+      document.body.classList.remove("about-page");
     };
   });
   return (
     <>
-      <ExamplesNavbar />
+      <IndexNavbar />
       <ProfilePageHeader />
       <div className="section profile-content">
         <Container>
@@ -191,9 +191,9 @@ function ProfilePage() {
           </TabContent>
         </Container>
       </div>
-      <DemoFooter />
+      <HkersFooter />
     </>
   );
 }
 
-export default ProfilePage;
+export default AboutPage;

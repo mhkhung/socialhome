@@ -1,10 +1,15 @@
 {
   "about": "關於我們",
   "admin_name": "MichaelHK",
-  "switch_lang": "Switch to default language",
+  "events": "活動",
+  "events_search": "搜索: 飯局, 行山",
+  "events_location": "城市, 社區",
+  "hiring": "招聘",
   "hometitle": "香港萬象",
-  "homesubtitle": "香港人黃色運動經濟飲食社交愛情圈",
-  "login_as_pro": "會員登入",
+  "homesubtitle": "香港人黃色吹水運動經濟飲食社交愛情圈",
+  "login_as_pro": "PRO 會員登入",
   "site_admin_by": "工程9",
-  "socialsite": "萬象社交網"
+  "socialaccounts": "活躍萬象戶口",
+  "socialsite": "萬象社交網",
+  "switch_lang": "Switch to default language"
 }

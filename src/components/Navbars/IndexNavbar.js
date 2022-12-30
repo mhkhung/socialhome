@@ -32,12 +32,27 @@ import {
   Nav,
   Container
 } from "reactstrap";
+import { OAuth2Popup, useOAuth2 } from "@tasoskakour/react-use-oauth2";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import i18next from "i18next";
 
 function IndexNavbar() {
+  const { data, loading, error, getAuth } = useOAuth2({
+    authorizeUrl: "http://mastodon.local/oauth/authorize",
+    clientId: "Xh3FXEAo8_xCECdNnnopVTa8hNWNTNIY2dviMsiQNw4",
+    redirectUri: `${document.location.origin}/oauth`,
+    scope: "read+write+push",
+    responseType: "code",
+    exchangeCodeForTokenServerURL: "https://api.hongkongers.net/token",
+    exchangeCodeForTokenMethod: "POST",
+    onSuccess: (payload) => console.log("Success", payload),
+    onError: (error_) => console.log("Error", error_)
+  });
+
+  const isLoggedIn = Boolean(data?.access_token);
+
   const { t } = useTranslation();
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
@@ -133,16 +148,15 @@ function IndexNavbar() {
                 <i className="nc-icon nc-book-bookmark" /> {t('about')}
               </NavLink>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <Button
                 className="btn-round"
                 color="danger"
-                href="https://www.creative-tim.com/product/paper-kit-pro-react?ref=pkr-index-navbar"
-                target="_blank"
+                onClick={() => getAuth()}
               >
                {t('login_as_pro')}
               </Button>
-            </NavItem>
+            </NavItem> */}
           </Nav>
         </Collapse>
       </Container>

@@ -1,10 +1,15 @@
 {
   "about": "About us",
   "admin_name": "MichaelHK",
-  "switch_lang": "Switch to Chinese",
+  "events": "Events",
+  "events_search": "Search for \"dinner\"",
+  "events_location": "City",
+  "hiring": "Hiring",
   "hometitle": "hkers.social",
   "homesubtitle": "Hong Kongers social circle",
   "login_as_pro": "Login as Pro",
   "site_admin_by": "IT9",
-  "socialsite": "Social site"
+  "socialaccounts": "Active socialites",
+  "socialsite": "Social site",
+  "switch_lang": "Switch to Chinese"
 }
