@@ -53,12 +53,13 @@ const renderSocialAccountRows = (accounts) => {
           <Row>
           {
             _.map(_.take(_.slice(accounts, 4 * row), 4), (item) => {
+              const itemURI = item.url.replace('mastodon.hongkongers.net', 'hkers.social');
               return (
                 <Col md="3">
-                  <Card className="card-profile card" onClick={(e) => cardOnClick(item)} style={{ height: "10rem", cursor: "pointer" }}>
+                  <Card className="card-profile card" style={{ height: "10rem", cursor: "pointer" }}>
                     <CardBody>
                       <div className="card-avatar border-white">
-                        <a href="#sa" onClick={e => e.preventDefault()}>
+                        <a href={itemURI} target="_blank">
                           <img
                             src={item.avatar}
                           ></img>

@@ -53,18 +53,21 @@ const renderSocialRow = (local, page) => {
           let p = parse(item.content);
           if (_.isArray(p) && p.length > 0) p = p[0];
           const contentText = _.truncate(_.isArray(p.props.children) ? _.join(_.map(p.props.children, (c) => _.isString(c) ? c : '' ), ' ') : p.props.children || '', { length: 100 });
+          const itemURI = item.uri.replace('mastodon.hongkongers.net', 'hkers.social');
           return (
             <Col md="4">
-              <Card className="card-blog card" onClick={(e) => cardOnClick(item)} style={{ height: "25rem", cursor: "pointer" }}>
-                <CardImg src={mediaURL} style={{ "max-height": "10rem", "min-height": "10rem", "object-fit": "cover" }} top></CardImg>
-                <CardBody>
-                  <CardText>
-                    {contentText}
-                  </CardText>
-                </CardBody>
+              <Card className="card-blog card" style={{ height: "25rem", cursor: "pointer" }}>
+                <a href={itemURI} target="_blank">
+                  <CardImg src={mediaURL} onClick={(e) => cardOnClick(item)} style={{ "max-height": "10rem", "min-height": "10rem", "object-fit": "cover" }} top></CardImg>
+                  <CardBody>
+                    <CardText>
+                      {contentText}
+                    </CardText>
+                  </CardBody>
+                </a>
                 <CardFooter className="text-center">
                   <div className="author">
-                    <a href="#social" onClick={(e) => e.preventDefault()}>
+                    <a href={itemURI} target="_blank">
                       <img className="avatar" src={item.account.avatar} />
                       <span>{item.account.acct}</span>
                     </a>
