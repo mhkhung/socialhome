@@ -18,7 +18,7 @@
 */
 import React, { useEffect, useState } from "react"
 import { useTranslation } from 'react-i18next';
-import _, { isArray } from 'lodash';
+import _ from 'lodash';
 
 // reactstrap components
 import {
@@ -26,25 +26,16 @@ import {
   Row,
   Card,
   CardBody,
-  CardFooter,
-  CardTitle,
   Col,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-  CardImg,
-  CardHeader,
   CardText,
 } from "reactstrap";
 
-import parse from "html-react-parser";
-
+// eslint-disable-next-line no-unused-vars
 const cardOnClick = (item) => {
   window.open(item.url, '_blank', 'noopener,noreferrer');
 }
 
 const renderSocialAccountRows = (accounts) => {
-  const row = 0;
   return (
     <>
     {
@@ -59,9 +50,10 @@ const renderSocialAccountRows = (accounts) => {
                   <Card className="card-profile card" style={{ height: "10rem", cursor: "pointer" }}>
                     <CardBody>
                       <div className="card-avatar border-white">
-                        <a href={itemURI} target="_blank">
+                        <a href={itemURI} target="_blank" rel="noreferrer">
                           <img
                             src={item.avatar}
+                            alt={item.display_name}
                           ></img>
                         </a>
                       </div>

@@ -20,15 +20,6 @@ import React from "react";
 
 // reactstrap components
 import {
-  Button,
-  Label,
-  FormGroup,
-  Input,
-  NavItem,
-  NavLink,
-  Nav,
-  TabContent,
-  TabPane,
   Container,
   Row,
   Col,
@@ -45,8 +36,10 @@ import HkersFooter from "components/Footers/HkersFooter.js";
 function AboutPage() {
   const [activeTab, setActiveTab] = React.useState("1");
   const { t } = useTranslation();
+  // eslint-disable-next-line no-unused-vars
   const breadcrumbs = useBreadcrumbs();
 
+  // eslint-disable-next-line no-unused-vars
   const toggle = (tab) => {
     if (activeTab !== tab) {
       setActiveTab(tab);
@@ -72,6 +65,7 @@ function AboutPage() {
               <img
                 className="img-circle img-no-padding img-responsive"
                 src="https://files.hongkongers.net/accounts/avatars/109/383/902/627/129/123/original/3a0624f9a7da8d97.png"
+                alt={t('admin_name')}
               />
             </div>
             <div className="name">

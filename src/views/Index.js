@@ -16,7 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { useTranslation } from 'react-i18next';
 import useBreadcrumbs from "use-react-router-breadcrumbs";
 
@@ -28,27 +28,29 @@ import IndexHeader from "components/Headers/IndexHeader.js";
 import HkersFooter from "components/Footers/HkersFooter.js";
 
 // index sections
-import SectionEvents from "views/index-sections/SectionEvents.js";
 import SectionSocial from "views/index-sections/SectionSocial.js";
 import SectionSocialAccounts from "views/index-sections/SectionSocialAccounts.js";
-import SectionHiring from "views/index-sections/SectionHiring.js";
-
-import SectionButtons from "views/index-sections/SectionButtons.js";
-import SectionNavbars from "views/index-sections/SectionNavbars.js";
-import SectionNavigation from "views/index-sections/SectionNavigation.js";
-import SectionProgress from "views/index-sections/SectionProgress.js";
-import SectionNotifications from "views/index-sections/SectionNotifications.js";
-import SectionTypography from "views/index-sections/SectionTypography.js";
-import SectionJavaScript from "views/index-sections/SectionJavaScript.js";
 import SectionCarousel from "views/index-sections/SectionCarousel.js";
-import SectionNucleoIcons from "views/index-sections/SectionNucleoIcons.js";
-import SectionDark from "views/index-sections/SectionDark.js";
-import SectionLogin from "views/index-sections/SectionLogin.js";
-import SectionExamples from "views/index-sections/SectionExamples.js";
-import SectionDownload from "views/index-sections/SectionDownload.js";
+// import SectionHiring from "views/index-sections/SectionHiring.js";
+// import SectionEvents from "views/index-sections/SectionEvents.js";
+
+// import SectionButtons from "views/index-sections/SectionButtons.js";
+// import SectionNavbars from "views/index-sections/SectionNavbars.js";
+// import SectionNavigation from "views/index-sections/SectionNavigation.js";
+// import SectionProgress from "views/index-sections/SectionProgress.js";
+// import SectionNotifications from "views/index-sections/SectionNotifications.js";
+// import SectionTypography from "views/index-sections/SectionTypography.js";
+// import SectionJavaScript from "views/index-sections/SectionJavaScript.js";
+// import SectionNucleoIcons from "views/index-sections/SectionNucleoIcons.js";
+// import SectionDark from "views/index-sections/SectionDark.js";
+// import SectionLogin from "views/index-sections/SectionLogin.js";
+// import SectionExamples from "views/index-sections/SectionExamples.js";
+// import SectionDownload from "views/index-sections/SectionDownload.js";
 
 function Index() {
+  // eslint-disable-next-line no-unused-vars
   const { t } = useTranslation();
+  // eslint-disable-next-line no-unused-vars
   const breadcrumbs = useBreadcrumbs();
   document.documentElement.classList.remove("nav-open");
   return (

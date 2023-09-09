@@ -18,7 +18,7 @@
 */
 import React, { useEffect, useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { solid, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 import _ from 'lodash';
 import LinesEllipsis from 'react-lines-ellipsis';
@@ -37,7 +37,6 @@ import {
   Col,
   Carousel,
   CarouselItem,
-  CarouselIndicators,
   CarouselCaption
 } from "reactstrap";
 
@@ -58,6 +57,9 @@ const renderLinks = (links) => {
         }
         else if (key === 'thecfhk') {
           return(<CardLink target="_blank" href={href}><FontAwesomeIcon icon={solid('fire')} /></CardLink>)
+        }
+        else {
+          return(<CardLink target="_blank" href={href}>{key}</CardLink>)
         }
       })
     }
@@ -102,6 +104,7 @@ function SectionCarousel() {
     const nextIndex = activeIndex === 0 ? prisoners.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   };
+  // eslint-disable-next-line no-unused-vars
   const goToIndex = (newIndex) => {
     if (animating) return;
     setActiveIndex(newIndex);
@@ -152,6 +155,7 @@ function SectionCarousel() {
                       </CarouselItem>
                     );
                   })}
+                  { /* eslint-disable-next-line jsx-a11y/anchor-is-valid */ }
                   <a
                     className="left carousel-control carousel-control-prev"
                     data-slide="prev"
@@ -164,6 +168,7 @@ function SectionCarousel() {
                     <span className="fa fa-angle-left" />
                     <span className="sr-only">Previous</span>
                   </a>
+                  { /* eslint-disable-next-line jsx-a11y/anchor-is-valid */ }
                   <a
                     className="right carousel-control carousel-control-next"
                     data-slide="next"
@@ -184,7 +189,7 @@ function SectionCarousel() {
                 <CardBody>
                   {/* <a href="#" target="_blank"> */}
                     <CardTitle>{name} {cname}</CardTitle><br/>
-                    {title ? <><CardSubtitle>{title}</CardSubtitle><br/></> : ''}
+                    {title || ctitle ? <><CardSubtitle>{title} {ctitle}</CardSubtitle><br/></> : ''}
                     <CardText><ResponsiveEllipsis text={summary} maxLine={6} /></CardText>
                     <CardText><ResponsiveEllipsis text={csummary} maxLine={6} /></CardText>
                   {/* </a> */}

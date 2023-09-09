@@ -32,13 +32,13 @@ import {
   Nav,
   Container
 } from "reactstrap";
-import { OAuth2Popup, useOAuth2 } from "@tasoskakour/react-use-oauth2";
+import { useOAuth2 } from "@tasoskakour/react-use-oauth2";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro';
-import i18next from "i18next";
+import { solid, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 function IndexNavbar() {
+  // eslint-disable-next-line no-unused-vars
   const { data, loading, error, getAuth } = useOAuth2({
     authorizeUrl: "http://mastodon.local/oauth/authorize",
     clientId: "Xh3FXEAo8_xCECdNnnopVTa8hNWNTNIY2dviMsiQNw4",
@@ -51,7 +51,7 @@ function IndexNavbar() {
     onError: (error_) => console.log("Error", error_)
   });
 
-  const isLoggedIn = Boolean(data?.access_token);
+  // const isLoggedIn = Boolean(data?.access_token);
 
   const { t } = useTranslation();
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
@@ -63,7 +63,7 @@ function IndexNavbar() {
   };
 
   const toggleLanguage = () => {
-    if (i18n.language != 'zh-HK') {
+    if (i18n.language !== 'zh-HK') {
       i18n.changeLanguage('zh-HK');
     }
     else {

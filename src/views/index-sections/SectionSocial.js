@@ -18,7 +18,7 @@
 */
 import React, { useEffect, useState } from "react"
 import { useTranslation } from 'react-i18next';
-import _, { isArray } from 'lodash';
+import _ from 'lodash';
 
 // reactstrap components
 import {
@@ -27,9 +27,7 @@ import {
   Card,
   CardBody,
   CardFooter,
-  CardTitle,
   CardImg,
-  CardHeader,
   CardText,
   Col,
   Pagination,
@@ -39,6 +37,7 @@ import {
 
 import parse from "html-react-parser";
 
+// eslint-disable-next-line no-unused-vars
 const cardOnClick = (item) => {
   window.open(item.uri, '_blank', 'noopener,noreferrer');
 }
@@ -57,11 +56,11 @@ const renderSocialRow = (local, page) => {
           return (
             <Col md="4">
               <Card className="card-blog card" style={{ height: "25rem", cursor: "pointer" }}>
-                  <a href={itemURI} target="_blank">
+                  <a href={itemURI} target="_blank" rel="noreferrer">
                     <CardImg src={mediaURL} style={{ "max-height": "10rem", "min-height": "10rem", "object-fit": "cover" }} top></CardImg>
                   </a>
                   <CardBody>
-                    <a href={itemURI} target="_blank">
+                    <a href={itemURI} target="_blank" rel="noreferrer">
                       <CardText>
                         {contentText}
                       </CardText>
@@ -70,8 +69,8 @@ const renderSocialRow = (local, page) => {
 
                 <CardFooter className="text-center">
                   <div className="author">
-                    <a href={itemURI} target="_blank">
-                      <img className="avatar" src={item.account.avatar} />
+                    <a href={itemURI} target="_blank" rel="noreferrer">
+                      <img className="avatar" src={item.account.avatar} alt={item.acct} />
                       <span>{item.account.acct}</span>
                     </a>
                   </div>
