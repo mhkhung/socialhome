@@ -108,7 +108,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-annotate-as-pure@npm:^7.22.5":
+"@babel/helper-annotate-as-pure@npm:^7.18.6, @babel/helper-annotate-as-pure@npm:^7.22.5":
   version: 7.22.5
   resolution: "@babel/helper-annotate-as-pure@npm:7.22.5"
   dependencies:
@@ -139,7 +139,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-create-class-features-plugin@npm:^7.18.6, @babel/helper-create-class-features-plugin@npm:^7.22.11, @babel/helper-create-class-features-plugin@npm:^7.22.15, @babel/helper-create-class-features-plugin@npm:^7.22.5":
+"@babel/helper-create-class-features-plugin@npm:^7.18.6, @babel/helper-create-class-features-plugin@npm:^7.21.0, @babel/helper-create-class-features-plugin@npm:^7.22.11, @babel/helper-create-class-features-plugin@npm:^7.22.15, @babel/helper-create-class-features-plugin@npm:^7.22.5":
   version: 7.22.15
   resolution: "@babel/helper-create-class-features-plugin@npm:7.22.15"
   dependencies:
@@ -483,6 +483,20 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0-0
   checksum: 57a1e11de60292dcb533828e6768c983bd483e2a90aac4afd4339e5164b4e54862c9adb7437a2ea6375c63ee23a10b8e20607a78a81b3c4c9334f2abccf84d54
+  languageName: node
+  linkType: hard
+
+"@babel/plugin-proposal-private-property-in-object@npm:^7.21.11":
+  version: 7.21.11
+  resolution: "@babel/plugin-proposal-private-property-in-object@npm:7.21.11"
+  dependencies:
+    "@babel/helper-annotate-as-pure": ^7.18.6
+    "@babel/helper-create-class-features-plugin": ^7.21.0
+    "@babel/helper-plugin-utils": ^7.20.2
+    "@babel/plugin-syntax-private-property-in-object": ^7.14.5
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 209cd2680a2c624327f4600abdef86da04787dd607bb10abec631a0b49258d8b299ed49ee4f9d964ce4247acf1eada207a8844fb2ea10d1a34dd75da5e0e7fb7
   languageName: node
   linkType: hard
 
@@ -7950,6 +7964,7 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "home@workspace:."
   dependencies:
+    "@babel/plugin-proposal-private-property-in-object": ^7.21.11
     "@fortawesome/fontawesome-svg-core": ^6.2.1
     "@fortawesome/free-brands-svg-icons": ^6.2.1
     "@fortawesome/free-regular-svg-icons": ^6.2.1

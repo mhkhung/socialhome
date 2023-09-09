@@ -58,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "bootstrap": "4.6.0",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.9"
