@@ -70,5 +70,6 @@
     "react": ">=16.0.0",
     "react-dom": ">=16.0.0"
   },
-  "main": "src/assets/scss/paper-kit.scss"
+  "main": "src/assets/scss/paper-kit.scss",
+  "packageManager": "yarn@3.6.3"
 }
