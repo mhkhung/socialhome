@@ -18,6 +18,7 @@
 */
 import React, { useEffect, useState } from "react"
 import { useTranslation } from 'react-i18next';
+import _ from 'lodash';
 // plugin that creates slider
 import Slider from "nouislider";
 
@@ -46,13 +47,36 @@ import {
   CustomInput
 } from "reactstrap";
 
-
-const cardOnClick = () => {
-  window.open('https://www.eventbrite.com/e/12-tickets-483866496717', '_blank', 'noopener,noreferrer');
-}
+import Moment from 'react-moment';
 
 function SectionEvents() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [events, setEvents] = useState({});
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const url = "https://api.hongkongers.net/events";
+    //const url = 'http://localhost:3030/events';
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
+        setEvents(json);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    fetchData();
+    const timeout = setInterval(()=>fetchData(), 15 * 60 * 1000);
+    document.body.classList.add("index");
+    return function cleanup() {
+      document.body.classList.remove("index");
+      clearInterval(timeout);
+    };
+  }, []);
+
+  if (!_.get(events, "events", []).length) return (<></>);
+  const event = events.events[index];
 
   return (
     <>
@@ -83,39 +107,74 @@ function SectionEvents() {
               </Col>
             </Row>
             <br />
-            <Row>
+            <Row className="align-items-center">
+              <Col md="1">
+                <Pagination className="pagination justify-content-center" listClassName="justify-content-center">
+                  <PaginationItem className={index == 0 ? "disabled": ""}>
+                    <PaginationLink
+                      aria-label="Previous"
+                      href="#events"
+                      onClick={(e) => { if (index > 0) { setIndex(index-1); } }}
+                    >
+                      <i aria-hidden={true} className="fa fa-angle-left" />
+                      <span className="sr-only">Previous</span>
+                    </PaginationLink>
+                  </PaginationItem>
+                </Pagination>
+              </Col>
               <Col md="9">
-                <Card className="mb-3" onClick={(e) => cardOnClick()} style={{ cursor: "pointer" }}>
-                  <CardImg src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F406982209%2F1134978863673%2F1%2Foriginal.20221208-170023?auto=format%2Ccompress&q=75&sharp=10&s=3f2abd5f32908d62879370fafa57bced" top></CardImg>
-                  <CardBody>
-                    <CardTitle tag="h4">多倫多香港人社區中心 12月除夕聚會 + 招聘平台啟動！</CardTitle>
-                    <CardText>
-                      香港人社區中心喺每月最後一個星期六都會舉行唔同活動，俾多倫多香港人一個聚腳嘅機會。歡迎大家除夕下午一齊嚟分享美食、交流新移民資訊！
-                    </CardText>
-                    <Row>
-                      <Col md="5">
-                        <CardText>
-                          <small className="text-muted">
-                            Sat, 31 December 2022
-                            <br/>
-                            2:30 PM - 4:30 PM EST
-                          </small>
-                        </CardText>
-                      </Col>
-                      <Col md="2">
-                      </Col>
-                      <Col md="5">
-                        <CardText>
-                          <small className="text-muted">
-                            105 Gibson Centre 105 Gibson Drive Markham,
-                            <br/>
-                            ON L3R 3K7
-                          </small>
-                        </CardText>
-                      </Col>
-                    </Row>
-                  </CardBody>
+                <Card className="mb-3" style={{ cursor: "pointer" }}>
+                <a href={event.url} target="_blank" ><CardImg src={event.image} top></CardImg>
+                <CardBody>
+                  <CardTitle tag="h4">{event.title}</CardTitle>
+                  <CardText>
+                    {event.summary}
+                  </CardText>
+                  <Row>
+                    <Col md="5">
+                      <CardText>
+                        <small className="text-muted">
+                          <Moment date={event.start.local} format='lll' locale={i18n.language} /> -
+                          <br/>
+                          <Moment date={event.end.local} format='lll' locale={i18n.language} />
+                        </small>
+                      </CardText>
+                    </Col>
+                    <Col md="2">
+                    </Col>
+                    <Col md="5">
+                      <CardText>
+                        <small className="text-muted">
+                          {
+                            _.map(event.venue.address.localized_multi_line_address_display, (line) => {
+                              return (
+                                <>
+                                  {line}
+                                  <br/>
+                                </>
+                            );
+                            })
+                          }
+                        </small>
+                      </CardText>
+                    </Col>
+                  </Row>
+                </CardBody></a>
                 </Card>
+              </Col>
+              <Col md="1">
+                <Pagination>
+                  <PaginationItem className={index == events.events.length -1 ? "disabled": ""}>
+                    <PaginationLink
+                      aria-label="Next"
+                      href="#events"
+                      onClick={(e) => { if (index < events.events.length -1 ) { setIndex(index+1); } }}
+                    >
+                      <i aria-hidden={true} className="fa fa-angle-right" />
+                      <span className="sr-only">Next</span>
+                    </PaginationLink>
+                  </PaginationItem>
+                </Pagination>
               </Col>
             </Row>
           </div>

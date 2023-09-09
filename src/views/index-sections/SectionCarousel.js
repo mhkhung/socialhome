@@ -16,11 +16,22 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useEffect, useState } from "react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro';
+
+import _ from 'lodash';
+import LinesEllipsis from 'react-lines-ellipsis';
+import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC';
 
 // reactstrap components
 import {
   Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardText,
+  CardLink,
   Container,
   Row,
   Col,
@@ -30,29 +41,51 @@ import {
   CarouselCaption
 } from "reactstrap";
 
-// core components
+import { useTranslation } from 'react-i18next';
 
-const items = [
-  {
-    src: require("assets/img/soroush-karimi.jpg"),
-    altText: "Somewhere",
-    caption: "Somewhere"
-  },
-  {
-    src: require("assets/img/federico-beccari.jpg"),
-    altText: "Somewhere else",
-    caption: "Somewhere else"
-  },
-  {
-    src: require("assets/img/joshua-stannard.jpg"),
-    altText: "Here it is",
-    caption: "Here it is"
-  }
-];
+// core components
+const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
+
+const renderLinks = (links) => {
+  return (
+    <>
+    {
+      Object.keys(links).map(key => {
+        const link = links[key];
+        const href = _.get(link, "zh", _.get(link, "en"));
+        if (key === 'wikipedia') {
+          return(<CardLink target="_blank" href={href}><FontAwesomeIcon icon={brands('wikipedia-w')} /></CardLink>)
+        }
+        else if (key === 'thecfhk') {
+          return(<CardLink target="_blank" href={href}><FontAwesomeIcon icon={solid('fire')} /></CardLink>)
+        }
+      })
+    }
+    </>
+  );  
+}
 
 function SectionCarousel() {
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [animating, setAnimating] = React.useState(false);
+  const [prisoners, setPrisoners] = useState([]);
+
+  useEffect(() => {
+    const url = "https://api.hongkongers.net/ppdb";
+    //const url = 'http://localhost:3030/ppdb';
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
+        setPrisoners(json);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    fetchData();
+  }, []);
+  
   const onExiting = () => {
     setAnimating(true);
   };
@@ -61,46 +94,60 @@ function SectionCarousel() {
   };
   const next = () => {
     if (animating) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+    const nextIndex = activeIndex === prisoners.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   };
   const previous = () => {
     if (animating) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+    const nextIndex = activeIndex === 0 ? prisoners.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   };
   const goToIndex = (newIndex) => {
     if (animating) return;
     setActiveIndex(newIndex);
   };
+
+  const ppdb = prisoners;
+  const pp = ppdb != null ? ppdb[activeIndex] : null;
+  const name = _.get(pp, 'name', '');
+  const cname = _.get(pp, 'translations.zh_HK.name', '');
+  const title = _.get(pp, 'title', '');
+  const ctitle =_.get(pp, 'translations.zh_HK.title', ''); 
+  const summary = _.get(pp, 'summary');
+  const csummary = _.get(pp, 'translations.zh_HK.summary', '');
+  const links = _.get(pp, "links", {});
   return (
     <>
       <div className="section pt-o" id="carousel">
         <Container>
+          <div className="title text-left">
+            <h2>{t('political_prisoners')}</h2>
+          </div>
           <Row>
             <Col className="ml-auto mr-auto" md="8">
               <Card className="page-carousel">
                 <Carousel
                   activeIndex={activeIndex}
+                  interval={8000}
                   next={next}
                   previous={previous}
                 >
-                  <CarouselIndicators
-                    items={items}
-                    activeIndex={activeIndex}
-                    onClickHandler={goToIndex}
-                  />
-                  {items.map((item) => {
+                  {ppdb.map((item) => {
                     return (
                       <CarouselItem
                         onExiting={onExiting}
                         onExited={onExited}
-                        key={item.src}
+                        key={ppdb.name}
                       >
-                        <img src={item.src} alt={item.altText} />
+                        <img 
+                          src={item.image || item.image_copyrighted} 
+                          alt={item.name} 
+                          style={{ aspectRatio: 2.5/2, 'object-fit': 'cover' }}
+                        />
                         <CarouselCaption
-                          captionText={item.caption}
-                          captionHeader=""
+                          className="font-weight-bold bg-dark"
+                          captionText={item.status}
+                          captionHeader={item.name +' ' + item.translations.zh_HK.name}
                         />
                       </CarouselItem>
                     );
@@ -108,7 +155,6 @@ function SectionCarousel() {
                   <a
                     className="left carousel-control carousel-control-prev"
                     data-slide="prev"
-                    href="#pablo"
                     onClick={(e) => {
                       e.preventDefault();
                       previous();
@@ -121,7 +167,6 @@ function SectionCarousel() {
                   <a
                     className="right carousel-control carousel-control-next"
                     data-slide="next"
-                    href="#pablo"
                     onClick={(e) => {
                       e.preventDefault();
                       next();
@@ -132,6 +177,21 @@ function SectionCarousel() {
                     <span className="sr-only">Next</span>
                   </a>
                 </Carousel>
+              </Card>
+            </Col>
+            <Col className="ml-auto mr-auto" md="4">
+              <Card className="text-center">
+                <CardBody>
+                  {/* <a href="#" target="_blank"> */}
+                    <CardTitle>{name} {cname}</CardTitle><br/>
+                    {title ? <><CardSubtitle>{title}</CardSubtitle><br/></> : ''}
+                    <CardText><ResponsiveEllipsis text={summary} maxLine={6} /></CardText>
+                    <CardText><ResponsiveEllipsis text={csummary} maxLine={6} /></CardText>
+                  {/* </a> */}
+                  {
+                    renderLinks(links)
+                  }
+                </CardBody>
               </Card>
             </Col>
           </Row>

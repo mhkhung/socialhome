@@ -57,11 +57,12 @@ function Index() {
       <IndexHeader />
 
       <div className="main">
-        <SectionEvents />
+        <SectionCarousel />
         <SectionSocial />
         <SectionSocialAccounts />
 
         {/* <SectionHiring />
+        <SectionEvents />
         <SectionButtons />
         <SectionNavbars />
         <SectionNavigation />

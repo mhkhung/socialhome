@@ -57,14 +57,17 @@ const renderSocialRow = (local, page) => {
           return (
             <Col md="4">
               <Card className="card-blog card" style={{ height: "25rem", cursor: "pointer" }}>
-                <a href={itemURI} target="_blank">
-                  <CardImg src={mediaURL} onClick={(e) => cardOnClick(item)} style={{ "max-height": "10rem", "min-height": "10rem", "object-fit": "cover" }} top></CardImg>
+                  <a href={itemURI} target="_blank">
+                    <CardImg src={mediaURL} style={{ "max-height": "10rem", "min-height": "10rem", "object-fit": "cover" }} top></CardImg>
+                  </a>
                   <CardBody>
-                    <CardText>
-                      {contentText}
-                    </CardText>
+                    <a href={itemURI} target="_blank">
+                      <CardText>
+                        {contentText}
+                      </CardText>
+                    </a>
                   </CardBody>
-                </a>
+
                 <CardFooter className="text-center">
                   <div className="author">
                     <a href={itemURI} target="_blank">
