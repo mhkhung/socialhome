@@ -67,6 +67,9 @@
     "react": ">=16.0.0",
     "react-dom": ">=16.0.0"
   },
+  "resolutions": {
+    "autoprefixer": "10.4.5"
+  },
   "main": "src/assets/scss/paper-kit.scss",
   "packageManager": "yarn@2.4.3"
 }

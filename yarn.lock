@@ -4041,12 +4041,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.4.13":
-  version: 10.4.15
-  resolution: "autoprefixer@npm:10.4.15"
+"autoprefixer@npm:10.4.5":
+  version: 10.4.5
+  resolution: "autoprefixer@npm:10.4.5"
   dependencies:
-    browserslist: ^4.21.10
-    caniuse-lite: ^1.0.30001520
+    browserslist: ^4.20.2
+    caniuse-lite: ^1.0.30001332
     fraction.js: ^4.2.0
     normalize-range: ^0.1.2
     picocolors: ^1.0.0
@@ -4055,7 +4055,7 @@ __metadata:
     postcss: ^8.1.0
   bin:
     autoprefixer: bin/autoprefixer
-  checksum: 923858272ebe1972f5c281b9661a9cc2164c7b71af197a47cae4ca14e6b2b62afbe9cb9b34e0199ecced2a7e05630d9bce88cc004aa3373b7d0f7817256fe9bb
+  checksum: 32286e0ee640b4d4b90b34119df893439b79b4cba40856152885f99fb172c259e428f1e322c6348df05d4fdfc584b36546cc0715d87c1e39f2194d642647642d
   languageName: node
   linkType: hard
 
@@ -4470,7 +4470,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:4.21.10, browserslist@npm:^4.0.0, browserslist@npm:^4.14.5, browserslist@npm:^4.18.1, browserslist@npm:^4.21.10, browserslist@npm:^4.21.4, browserslist@npm:^4.21.9":
+"browserslist@npm:4.21.10, browserslist@npm:^4.0.0, browserslist@npm:^4.14.5, browserslist@npm:^4.18.1, browserslist@npm:^4.20.2, browserslist@npm:^4.21.10, browserslist@npm:^4.21.4, browserslist@npm:^4.21.9":
   version: 4.21.10
   resolution: "browserslist@npm:4.21.10"
   dependencies:
@@ -4632,10 +4632,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001517, caniuse-lite@npm:^1.0.30001520":
+"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001517":
   version: 1.0.30001529
   resolution: "caniuse-lite@npm:1.0.30001529"
   checksum: 52ebbd2059ddcc8952c3550ecea47b4d8859ca29c09b4e933ce7a9bf89a3f8f6f292cf55109428087f120c6b48acb825aca15aa6afe8d863904448dc9fa2d2e7
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001332":
+  version: 1.0.30001532
+  resolution: "caniuse-lite@npm:1.0.30001532"
+  checksum: a8207807dd32d16b0cb7ce6074abcab62cc81e8601f93947d87246b198a03580db24f640ec3d21d2d8ffc19d20fa0c3bdad4c2b44739e35e2c6c9e64313b9451
   languageName: node
   linkType: hard
 
