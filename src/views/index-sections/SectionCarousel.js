@@ -81,6 +81,7 @@ function SectionCarousel() {
         const response = await fetch(url);
         const json = await response.json();
         setPrisoners(json);
+        setActiveIndex(_.random(0, json.length, false));
       } catch (error) {
         console.log("error", error);
       }

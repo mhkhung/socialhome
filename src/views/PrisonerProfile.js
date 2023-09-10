@@ -96,7 +96,7 @@ function PrisonerProfile() {
   const summary = _.get(pp, 'summary');
   const csummary = _.get(pp, 'translations.zh_HK.summary', '');
   const links = _.get(pp, "links", {});
-  const image = _.get(pp, "image", _.get(pp, "image_copyrighted", "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/694px-Unknown_person.jpg"));
+  const image = _.get(pp, "image") || _.get(pp, "image_copyrighted") || "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/694px-Unknown_person.jpg";
   const charges = _.get(pp, "charges", []);
   // eslint-disable-next-line no-unused-vars
   const breadcrumbs = useBreadcrumbs();
@@ -123,7 +123,7 @@ function PrisonerProfile() {
       <div className="section profile-content">
         <Container>
           <div className="owner">
-            <div className="avatar">
+            <div className="avatar-md">
               <img
                 className="img-circle img-no-padding img-responsive"
                 src={image}
