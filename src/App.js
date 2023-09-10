@@ -10,8 +10,9 @@ import "assets/demo/demo.css?v=1.3.0";
 import Index from "views/Index.js";
 // import NucleoIcons from "views/NucleoIcons.js";
 // import LandingPage from "views/examples/LandingPage.js";
-import AboutPage from "views/examples/AboutPage.js";
 // import RegisterPage from "views/examples/RegisterPage.js";
+import PrisonerProfile from "views/PrisonerProfile";
+import AboutPage from "views/AboutPage.js";
 // others
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/index" element={<Index />} />
         <Route path="/oauth" element={<OAuthPopup />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/profile/:handle" element={<PrisonerProfile />} />
         <Route path="/" element={<Navigate to="/index" replace />} />
 
         {/* <Route path="/oauth" >

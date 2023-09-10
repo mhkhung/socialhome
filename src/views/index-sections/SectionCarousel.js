@@ -187,12 +187,12 @@ function SectionCarousel() {
             <Col className="ml-auto mr-auto" md="4">
               <Card className="text-center">
                 <CardBody>
-                  {/* <a href="#" target="_blank"> */}
+                  <a href={"profile/" + encodeURIComponent(name) } >
                     <CardTitle>{name} {cname}</CardTitle><br/>
                     {title || ctitle ? <><CardSubtitle>{title} {ctitle}</CardSubtitle><br/></> : ''}
                     <CardText><ResponsiveEllipsis text={summary} maxLine={6} /></CardText>
                     <CardText><ResponsiveEllipsis text={csummary} maxLine={6} /></CardText>
-                  {/* </a> */}
+                  </a>
                   {
                     renderLinks(links)
                   }

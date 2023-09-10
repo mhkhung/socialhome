@@ -44,7 +44,7 @@ function ProfilePageHeader() {
       <div
         style={{
           backgroundImage:
-            "url(" + require("assets/img/fabio-mangione.jpg") + ")"
+            "url(https://upload.wikimedia.org/wikipedia/commons/0/03/Lennon_Wall_stair_view_20141101.jpg)"
         }}
         className="page-header page-header-xs"
         data-parallax={true}
