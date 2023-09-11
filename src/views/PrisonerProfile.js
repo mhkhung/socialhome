@@ -4,6 +4,8 @@ import _ from 'lodash';
 
 // reactstrap components
 import {
+  Breadcrumb, 
+  BreadcrumbItem,
   Container,
   Row,
   Col,
@@ -22,12 +24,14 @@ import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import HkersFooter from "components/Footers/HkersFooter.js";
 
 const renderLinks = (links) => {
+  let lang = localStorage.getItem('i18nextLng') || 'zh';
+  lang = lang.substring(0, lang.indexOf("-"));
   return (
     <>
     {
       Object.keys(links).map(key => {
         const link = links[key];
-        const href = _.get(link, "zh", _.get(link, "en"));
+        const href = _.get(link, lang, _.get(link, "en"));
         if (key === 'wikipedia') {
           return(<CardLink target="_blank" href={href}><FontAwesomeIcon icon={brands('wikipedia-w')} /></CardLink>)
         }
@@ -54,9 +58,9 @@ const renderCharges = (charges, t) => {
         const sentencing = _.get(charge, 'sentencing', '');
         return (
           <>
-            <p>{chargetext ? t('charge') + ': ' + chargetext : ''}</p>
-            <p>{incident ? t('incident') + ': ' + incident : ''}</p>
-            <p>{sentencing ? t('sentencing') + ': ' + sentencing : ''}</p>
+            { chargetext ? (<><p><b>{t('charge') + ': '}</b>{chargetext}</p></>) : '' }
+            { incident ? (<><p><b>{t('incident') + ': '}</b>{incident}</p></>) : '' }
+            { sentencing ? (<><p><b>{t('sentencing') + ': '}</b>{sentencing}</p></>) : '' }
             <br/>
           </>
         )
@@ -119,7 +123,10 @@ function PrisonerProfile() {
     <>
       <IndexNavbar />
       <ProfilePageHeader />
-
+      <Breadcrumb>
+        <BreadcrumbItem><a href="/#carousel">{t('political_prisoners')}</a></BreadcrumbItem>
+        <BreadcrumbItem active>{name}</BreadcrumbItem>
+      </Breadcrumb>
       <div className="section profile-content">
         <Container>
           <div className="owner">

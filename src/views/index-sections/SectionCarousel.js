@@ -46,12 +46,14 @@ import { useTranslation } from 'react-i18next';
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
 
 const renderLinks = (links) => {
+  let lang = localStorage.getItem('i18nextLng') || 'zh';
+  lang = lang.substring(0, lang.indexOf("-"));
   return (
     <>
     {
       Object.keys(links).map(key => {
         const link = links[key];
-        const href = _.get(link, "zh", _.get(link, "en"));
+        const href = _.get(link, lang, _.get(link, "en"));
         if (key === 'wikipedia') {
           return(<CardLink target="_blank" href={href}><FontAwesomeIcon icon={brands('wikipedia-w')} /></CardLink>)
         }
