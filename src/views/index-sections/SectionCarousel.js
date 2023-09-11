@@ -201,6 +201,7 @@ function SectionCarousel() {
               </Card>
             </Col>
           </Row>
+          <a href="https://api.hongkongers.net/ppdb">{t('ppdb_source')}</a>
         </Container>
       </div>{" "}
     </>
