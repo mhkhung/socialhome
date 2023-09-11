@@ -1,13 +1,16 @@
 {
   "about": "About us",
   "admin_name": "MichaelHK",
+  "and_others": "and others",
   "charge": "Charge",
+  "data_source": "Data Source:",
   "events": "Events",
   "events_search": "Search for \"dinner\"",
   "events_location": "City",
   "hiring": "Hiring",
   "hometitle": "hkers.social",
   "homesubtitle": "Hong Kongers social circle",
+  "hongkongwatch": "Hong Kong Watch",
   "incident": "Incident",
   "login_as_pro": "Login as Pro",
   "political_prisoners": "Hong Kong Political Prisoners Database",
@@ -16,5 +19,6 @@
   "site_admin_by": "IT9",
   "socialaccounts": "Active socialites",
   "socialsite": "Social site",
-  "switch_lang": "Switch to Chinese"
+  "switch_lang": "Switch to Chinese",
+  "thecfhk": "CFHK Foundation"
 }
