@@ -60,7 +60,7 @@ function AboutPage() {
 
       <div className="section profile-content">
         <Container>
-          <div className="owner">
+          {/* <div className="owner">
             <div className="avatar">
               <img
                 className="img-circle img-no-padding img-responsive"
@@ -74,9 +74,11 @@ function AboutPage() {
               </h4>
               <h6 className="description">{t('hometitle')}</h6>
             </div>
-          </div>
+          </div> */}
           <Row>
             <Col className="ml-auto mr-auto text-center" md="6">
+              <br/>
+              <br/>
               <p>
                 無論在海外定係在香港，有關生活/留學/工作/旅遊/旅居/問題，想識同路人想講故事想問想呻想分享想鬧想讚，我們都是香港人。
                 <br/><br/>

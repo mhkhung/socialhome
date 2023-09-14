@@ -124,7 +124,7 @@ function PrisonerProfile() {
       <IndexNavbar />
       <ProfilePageHeader />
       <Breadcrumb>
-        <BreadcrumbItem><a href="/#carousel">{t('political_prisoners')}</a></BreadcrumbItem>
+        <BreadcrumbItem><a href="/index#carousel">{t('political_prisoners')}</a></BreadcrumbItem>
         <BreadcrumbItem active>{name}</BreadcrumbItem>
       </Breadcrumb>
       <div className="section profile-content">
