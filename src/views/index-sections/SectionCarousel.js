@@ -203,7 +203,7 @@ function SectionCarousel() {
               </Card>
             </Col>
           </Row>
-          <a href="https://api.hongkongers.net/ppdb" target="_blank" rel="noreferrer">{t('ppdb_source')}</a>
+          <a href="https://github.com/hkppdb/ppdb" target="_blank" rel="noreferrer">{t('ppdb_source')}</a> <FontAwesomeIcon icon={brands('github')} />
           <p>{t('data_source')} <a href="https://www.hongkongwatch.org/" target="_blank" rel="noreferrer">{t('hongkongwatch')}</a> <a href="https://www.thecfhk.org" target="_blank" rel="noreferrer">{t('thecfhk')}</a> {t('and_others')}
           </p>
         </Container>

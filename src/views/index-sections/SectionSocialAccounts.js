@@ -101,7 +101,7 @@ const SectionSocialAccounts = (props) => {
 
   return (
     <>
-      <div className="section text-center section-social-accounts" id="social">
+      <div className="section text-center section-social-accounts" id="socialaccounts">
         <Container>
           <div className="title text-left">
             <h2>{t('socialaccounts')}</h2>

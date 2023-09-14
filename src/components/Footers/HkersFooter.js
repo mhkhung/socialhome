@@ -30,7 +30,7 @@ function HkersFooter() {
           <div className="credits ml-auto">
             <span className="copyright">
               © {new Date().getFullYear()}, made with{" "}
-              <i className="fa fa-heart heart" /> by <a href="https://hkers.social/@michaelhk" target="_blank">MichaelHK</a>
+              <i className="fa fa-heart heart" /> by MichaelHK
             </span>
           </div>
         </Row>

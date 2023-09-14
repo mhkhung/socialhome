@@ -35,7 +35,7 @@ import HkersFooter from "components/Footers/HkersFooter.js";
 
 function AboutPage() {
   const [activeTab, setActiveTab] = React.useState("1");
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   // eslint-disable-next-line no-unused-vars
   const breadcrumbs = useBreadcrumbs();
 
