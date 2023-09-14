@@ -26,7 +26,7 @@ import {
 } from "reactstrap";
 
 import useBreadcrumbs from "use-react-router-breadcrumbs";
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
