@@ -55,13 +55,7 @@ function IndexHeader() {
           }}
         />
         <h6 className="category category-absolute">
-          {t('site_admin_by')}{" "}
-          <a
-            href="https://mastodon.hongkongers.net/@michaelhk"
-            target="_blank"
-          >
-            {t('admin_name')}
-          </a>
+          {t('site_admin_by')} {t('admin_name')}
         </h6>
       </div>
     </>
